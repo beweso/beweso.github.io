@@ -1,2 +1,2 @@
-# beweso.github.io
-Beweso website
+# Beweso
+**Digital products for collectors.**
