@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Beweso — Digital products for collectors</title>
+    <meta name="title" content="Beweso — Digital products for collectors">
+    <meta name="description" content="Beweso builds modern digital products that make collecting simpler. Meet Dexaroo, the digital home for your Pokémon TCG collection.">
+    
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://beweso.nl/">
+    <meta property="og:title" content="Beweso — Digital products for collectors">
+    <meta property="og:description" content="Beweso builds modern digital products that make collecting simpler. Meet Dexaroo, the digital home for your Pokémon TCG collection.">
+    <meta property="og:image" content="https://beweso.nl/og-image.png">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://beweso.nl/">
+    <meta property="twitter:title" content="Beweso — Digital products for collectors">
+    <meta property="twitter:description" content="Beweso builds modern digital products that make collecting simpler. Meet Dexaroo, the digital home for your Pokémon TCG collection.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        salient: {
+                            blue: '#2563eb',
+                            blueHover: '#1d4ed8',
+                            blueLight: '#eff6ff',
+                            slate: '#0f172a',
+                            body: '#475569',
+                            border: '#e2e8f0',
+                            bg: '#f8fafc',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            .animate-subtle-float,
+            .reveal-on-scroll {
+                animation: none !important;
+                transition: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+        .animate-subtle-float {
+            animation: subtleFloat 6s ease-in-out infinite;
+        }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-salient-bg text-salient-body font-sans antialiased selection:bg-salient-blue selection:text-white">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/80">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            
+            <a href="#" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                <img src="logo.svg" alt="Beweso logo" class="w-8 h-8 object-contain">
+                <span class="font-extrabold text-xl tracking-tight text-salient-slate">beweso</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#dexaroo" class="text-slate-600 hover:text-salient-slate transition-colors">Dexaroo</a>
+                <a href="#features" class="text-slate-600 hover:text-salient-slate transition-colors">Features</a>
+                <a href="#about" class="text-slate-600 hover:text-salient-slate transition-colors">About</a>
+                <a href="https://dexaroo.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-4 py-2 rounded-full bg-salient-blue text-white font-semibold hover:bg-salient-blueHover shadow-sm shadow-blue-500/20 transition-all">
+                    Discover Dexaroo
+                </a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-salient-slate focus:outline-none" aria-label="Toggle Navigation Menu" aria-expanded="false">
+                <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-6 py-4 flex flex-col gap-4">
+            <a href="#dexaroo" class="mobile-nav-link text-base font-medium text-slate-700 hover:text-salient-slate">Dexaroo</a>
+            <a href="#features" class="mobile-nav-link text-base font-medium text-slate-700 hover:text-salient-slate">Features</a>
+            <a href="#about" class="mobile-nav-link text-base font-medium text-slate-700 hover:text-salient-slate">About</a>
+            <a href="https://dexaroo.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full py-2.5 rounded-full bg-salient-blue text-white font-semibold shadow-sm hover:bg-salient-blueHover transition-colors">
+                Discover Dexaroo
+            </a>
+        </div>
+    </header>
+
+    <main class="pt-16">
+        <section class="relative py-20 lg:py-28 px-6 overflow-hidden">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <div class="lg:col-span-7 flex flex-col items-start reveal-on-scroll">
+                    <span class="inline-block px-3 py-1 mb-6 text-xs font-semibold uppercase tracking-wider text-salient-blue bg-salient-blueLight border border-blue-200/60 rounded-full">
+                        Software &amp; Digital Products
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-salient-slate leading-[1.12]">
+                        Digital products for collectors.
+                    </h1>
+                    <p class="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl leading-relaxed font-normal">
+                        Beweso creates simple, useful, and enjoyable digital experiences around the things people love to collect. Our flagship product, <strong class="font-semibold text-salient-slate">Dexaroo</strong>, helps collectors track their Pokémon TCG collection, monitor market values, and complete their sets.
+                    </p>
+                    <div class="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
+                        <a href="https://dexaroo.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-salient-blue text-white font-semibold shadow-md shadow-blue-500/20 hover:bg-salient-blueHover transition-all hover:scale-[1.01] active:scale-[0.99] text-center">
+                            Explore Dexaroo <span class="ml-2">→</span>
+                        </a>
+                        <a href="#about" class="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-white border border-slate-200 text-salient-slate font-semibold hover:bg-slate-50 transition-colors text-center shadow-sm">
+                            About Beweso
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 reveal-on-scroll">
+                    <div class="relative mx-auto max-w-sm lg:max-w-none">
+                        
+                        <div class="animate-subtle-float">
+                            <img 
+                                src="profile.png" 
+                                alt="Dexaroo Profile Preview" 
+                                class="w-full h-auto rounded-xl object-cover border border-slate-200 shadow-xl shadow-slate-200/50"
+                            />
+                        </div>
+
+                        <div class="absolute -z-10 inset-0 bg-gradient-to-tr from-blue-500/10 to-indigo-500/10 rounded-3xl blur-2xl transform scale-95 opacity-80"></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="dexaroo" class="py-20 lg:py-28 px-6 bg-white border-y border-slate-200/80">
+            <div class="max-w-6xl mx-auto">
+                
+                <div class="max-w-2xl reveal-on-scroll">
+                    <span class="inline-block text-xs font-bold uppercase tracking-widest text-salient-blue mb-3">
+                        Our First Product
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-salient-slate">
+                        Meet Dexaroo.
+                    </h2>
+                    <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+                        The digital home for your Pokémon TCG collection. Dexaroo helps collectors keep track of what they own, what they are missing and how close they are to completing their sets.
+                    </p>
+                    <div class="mt-6">
+                        <a href="https://dexaroo.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-base font-semibold text-salient-blue hover:text-salient-blueHover transition-colors group">
+                            Visit Dexaroo <span class="ml-1 group-hover:translate-x-1 transition-transform">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mt-12 reveal-on-scroll space-y-16">
+                    
+                    <!-- Pokédex Section -->
+                    <div>
+                        <div class="pb-4 mb-5 border-b border-slate-200">
+                            <h3 class="text-xl font-bold text-salient-slate">Pokédex Tracking</h3>
+                            <p class="text-sm text-slate-600 mt-1">
+                                Search through all Pokémon, view directly linked TCG cards, and easily track your progress on the National Pokédex.
+                            </p>
+                        </div>
+                        <img src="pokedex.png" alt="Dexaroo Pokédex Preview" class="w-full h-auto rounded-xl object-cover border border-slate-200 shadow-md" />
+                    </div>
+
+                    <!-- Sets Section -->
+                    <div>
+                        <div class="pb-4 mb-5 border-b border-slate-200">
+                            <h3 class="text-xl font-bold text-salient-slate">Set Management & Completeness</h3>
+                            <p class="text-sm text-slate-600 mt-1">
+                                See exactly which cards you own per TCG set, monitor market values, and track your progress toward a complete Master Set.
+                            </p>
+                        </div>
+                        <img src="sets.png" alt="Dexaroo Sets Preview" class="w-full h-auto rounded-xl object-cover border border-slate-200 shadow-md" />
+                    </div>
+
+                    <!-- Achievements Section -->
+                    <div>
+                        <div class="pb-4 mb-5 border-b border-slate-200">
+                            <h3 class="text-xl font-bold text-salient-slate">Achievements & Badges</h3>
+                            <p class="text-sm text-slate-600 mt-1">
+                                Unlock unique badges and milestones as your collection grows, from specific generations to special card sets.
+                            </p>
+                        </div>
+                        <img src="achievements.png" alt="Dexaroo Achievements Preview" class="w-full h-auto rounded-xl object-cover border border-slate-200 shadow-md" />
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="features" class="py-20 lg:py-28 px-6">
+            <div class="max-w-6xl mx-auto">
+                
+                <div class="max-w-2xl text-left mb-12 reveal-on-scroll">
+                    <span class="inline-block text-xs font-bold uppercase tracking-widest text-salient-blue mb-3">
+                        Features Overview
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-salient-slate">
+                        Key features of Dexaroo
+                    </h2>
+                    <p class="mt-3 text-lg text-slate-600 leading-relaxed">
+                        Everything you need to organize, value, and share your Pokémon TCG collection in one place.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-slate-300 hover:shadow-md transition-all reveal-on-scroll">
+                        <div class="w-10 h-10 rounded-xl bg-salient-blueLight border border-blue-100 flex items-center justify-center text-salient-blue mb-5">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-salient-slate">Pokédex & Sets</h3>
+                        <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                            Browse every Pokémon and TCG set, track missing cards, and measure your set completion.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-slate-300 hover:shadow-md transition-all reveal-on-scroll">
+                        <div class="w-10 h-10 rounded-xl bg-salient-blueLight border border-blue-100 flex items-center justify-center text-salient-blue mb-5">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-salient-slate">Market Value & Prices</h3>
+                        <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                            See real total market values, track per-card prices, and view historical price trends.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-slate-300 hover:shadow-md transition-all reveal-on-scroll">
+                        <div class="w-10 h-10 rounded-xl bg-salient-blueLight border border-blue-100 flex items-center justify-center text-salient-blue mb-5">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-salient-slate">Fair Trade Tool</h3>
+                        <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                            Compare total market value for both sides of a trade to make sure every deal is fair.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-slate-300 hover:shadow-md transition-all reveal-on-scroll">
+                        <div class="w-10 h-10 rounded-xl bg-salient-blueLight border border-blue-100 flex items-center justify-center text-salient-blue mb-5">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-salient-slate">Binder Placeholders</h3>
+                        <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                            Generate printable placeholder cards for your physical binder to keep your slots organized.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-slate-300 hover:shadow-md transition-all reveal-on-scroll">
+                        <div class="w-10 h-10 rounded-xl bg-salient-blueLight border border-blue-100 flex items-center justify-center text-salient-blue mb-5">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-salient-slate">Wishlist & Selling Lists</h3>
+                        <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                            Save cards you are looking to buy or mark cards from your collection you want to sell.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-slate-300 hover:shadow-md transition-all reveal-on-scroll">
+                        <div class="w-10 h-10 rounded-xl bg-salient-blueLight border border-blue-100 flex items-center justify-center text-salient-blue mb-5">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-salient-slate">Achievements & Badges</h3>
+                        <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                            Unlock achievements for collector milestones, generation completion, starters, and more.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-slate-300 hover:shadow-md transition-all reveal-on-scroll">
+                        <div class="w-10 h-10 rounded-xl bg-salient-blueLight border border-blue-100 flex items-center justify-center text-salient-blue mb-5">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-salient-slate">Trainer Profiles</h3>
+                        <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                            Share your public profile, customize avatar and header colors, and compete on leaderboards.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-slate-300 hover:shadow-md transition-all reveal-on-scroll">
+                        <div class="w-10 h-10 rounded-xl bg-salient-blueLight border border-blue-100 flex items-center justify-center text-salient-blue mb-5">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-salient-slate">Import & Export</h3>
+                        <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                            Import caught Pokémon from CSV/Excel files and export your complete collection as JSON or spreadsheet.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 lg:py-28 px-6 bg-salient-slate text-white">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+                    
+                    <div class="lg:col-span-5 reveal-on-scroll">
+                        <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-400 mb-3">
+                            About Beweso
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
+                            Built with curiosity. Designed with purpose.
+                        </h2>
+
+                        <div class="mt-8 pt-6 border-t border-slate-800 space-y-2 text-sm text-slate-400">
+                            <p><strong class="text-slate-200">Email:</strong> <a href="mailto:info@beweso.nl" class="text-blue-400 hover:underline">info@beweso.nl</a></p>
+                            <p><strong class="text-slate-200">Chamber of Commerce:</strong> 12345678</p>
+                            <p><strong class="text-slate-200">VAT ID:</strong> NL123456789B01</p>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 reveal-on-scroll">
+                        <p class="text-lg text-slate-300 leading-relaxed">
+                            Beweso builds modern digital products around the things people are passionate about.
+                        </p>
+                        <p class="mt-4 text-base text-slate-400 leading-relaxed">
+                            We believe software should make complex information feel simple. That means thoughtful interfaces, useful data and products that are enjoyable to use — whether you are tracking a collection, discovering something new or working towards a goal.
+                        </p>
+
+                        <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 border-t border-slate-800">
+                            <div>
+                                <h3 class="text-base font-semibold text-white">Simple</h3>
+                                <p class="mt-1 text-sm text-slate-400 leading-normal">
+                                    Complexity stays behind the interface.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-semibold text-white">Useful</h3>
+                                <p class="mt-1 text-sm text-slate-400 leading-normal">
+                                    Every feature should have a purpose.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-semibold text-white">Enjoyable</h3>
+                                <p class="mt-1 text-sm text-slate-400 leading-normal">
+                                    Good software should feel good to use.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 lg:py-28 px-6 text-center">
+            <div class="max-w-3xl mx-auto reveal-on-scroll">
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-salient-slate">
+                    Dexaroo is only the beginning.
+                </h2>
+                <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+                    Beweso is building a growing collection of digital products. We start with collecting, but the idea is bigger: turn passions and complex information into simple, useful experiences.
+                </p>
+                <div class="mt-8">
+                    <a href="https://dexaroo.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-salient-blue text-white font-semibold shadow-md shadow-blue-500/20 hover:bg-salient-blueHover transition-all hover:scale-[1.01] active:scale-[0.99]">
+                        Explore Dexaroo <span class="ml-2">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 px-6 border-t border-slate-200 bg-white">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+            
+            <a href="#" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                <img src="logo.svg" alt="Beweso logo" class="w-6 h-6 object-contain">
+                <span class="font-extrabold text-lg tracking-tight text-salient-slate">beweso</span>
+            </a>
+
+            <div class="flex items-center gap-6 text-sm text-slate-500">
+                <a href="mailto:info@beweso.nl" class="hover:text-salient-slate transition-colors">
+                    info@beweso.nl
+                </a>
+                <a href="https://dexaroo.com" target="_blank" rel="noopener noreferrer" class="hover:text-salient-slate transition-colors">
+                    Dexaroo
+                </a>
+                <span>© 2026 Beweso</span>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMenu() {
+            const isOpen = mobileMenu.classList.contains('hidden');
+            if (isOpen) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -40px 0px',
+            threshold: 0.1
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(element => {
+            revealObserver.observe(element);
+        });
+    </script>
+</body>
+</html>

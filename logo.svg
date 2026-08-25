@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" aria-label="Beweso Icon">
+  <!-- Achterste kaart (Lichtblauw: dichter bij het primaire blauw gehaald) -->
+  <rect x="2" y="2" width="46" height="56" rx="12" fill="#2563eb" opacity="0.35" />
+  
+  <!-- Voorste kaart (Primaire Salient Blauw) -->
+  <rect x="16" y="6" width="46" height="56" rx="12" fill="#2563eb" />
+  
+  <!-- Grote, gebalanceerde 'B' die het blauwe vlak optimaal opvult -->
+  <path d="M 28 16 H 42 C 47 16 51 19 51 24 C 51 28 48.5 31 44.5 32 C 49.5 33 52 36.5 52 42 C 52 48 47.5 51 42 51 H 28 V 16 Z M 34 22 V 30 H 41 C 43.8 30 45.5 28.5 45.5 26 C 45.5 23.5 43.8 22 41 22 H 34 Z M 34 35 V 45 H 41.5 C 44.5 45 46.5 43.2 46.5 40 C 46.5 36.8 44.5 35 41.5 35 H 34 Z" fill="#ffffff" />
+</svg>
